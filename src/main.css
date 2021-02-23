@@ -1,0 +1,88 @@
+html {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: aliceblue;
+    text-align: center;
+}
+
+footer {
+    color: gray;
+    font-size: x-small;
+}
+
+a {
+    color: blue;
+}
+
+summary:focus {
+    outline: none;
+}
+
+summary, button {
+    cursor: pointer;
+}
+
+summary + p {
+    margin-top: 2rem;
+}
+
+button {
+    border: none;
+    margin: 1rem;
+    text-decoration: none;
+    background-color: blue;
+    color: aliceblue;
+    font-size: 1rem;
+}
+
+button i.fas {
+    font-size: 2rem;
+}
+
+button span {
+    font-size: 0.75rem;
+}
+
+button:last-of-type {
+    background-color: red;
+}
+
+button, p {
+    display: inline-block;
+    width: 80%;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+p {
+    margin: 0;
+}
+
+details p {
+    text-align: justify;
+}
+
+details p:last-child {
+    text-align: center;
+}
+
+details img {
+    margin: 0.5rem;
+}
+
+.info {
+    color: navy;
+    background-color: lightskyblue;
+}
+
+.warning {
+    color: saddlebrown;
+    background-color: lemonchiffon;
+}
+
+.danger {
+    color: darkred;
+    background-color: mistyrose;
+}

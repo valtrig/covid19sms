@@ -1,0 +1,7 @@
+services:
+  web:
+    image: covid19sms
+    container_name: covid19sms.run
+    build: .
+    ports:
+      - "8080:80"
