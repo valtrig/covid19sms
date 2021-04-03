@@ -31,7 +31,7 @@ window.onload = function () {
 
         // Create the appropriate URL and open it so that it can be picked up by
         // the device's SMS application.
-        window.open(smsUri + encodeURIComponent(' ' + smsBodyContent));
+        window.open(smsUri + encodeURIComponent(smsBodyContent));
       }
     } else if (confirm(MESSAGE_DELETE_INFO)) {
       // Clear the local storage, if the clicked button contains no SMS code,
