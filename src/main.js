@@ -7,10 +7,10 @@ window.onload = function () {
   // Event handler for page buttons
   function handleOnclick(event) {
     const SMS_BODY_KEY = 'smsBody';
-    const smsCode = event.currentTarget.value;
+    var smsUri = event.currentTarget.value;
 
-    // Determine whether the clicked button contained a specific SMS code.
-    if (!isEmpty(smsCode)) {
+    // Determine whether the clicked button contained a specific SMS URI.
+    if (!isEmpty(smsUri)) {
       // Retrieve the SMS body content from the browser's local storage and, if not found,
       // prompt the user for it.
       var smsBodyContent = localStorage.getItem(SMS_BODY_KEY);
@@ -23,15 +23,15 @@ window.onload = function () {
         // (Re-)write the SMS body to local storage.
         localStorage.setItem(SMS_BODY_KEY, smsBodyContent);
 
-        // Distinguish between iOS and Android and select the appropriate character
-        // for separating the SMS number from the body.
-        const uriSeparator = (['iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
-          navigator.userAgent.includes('Mac')) ? '&' : '?';
+        // Detect if the device is using 'iOS' or 'macos' and replace the default character
+        // that separates the SMS number from the body with the Apple specific one.
+        if (['iPad', 'iPhone', 'iPod'].includes(navigator.platform) || navigator.userAgent.includes('Mac')) {
+          smsUri = smsUri.replace('?', '&');
+        }
 
         // Create the appropriate URL and open it so that it can be picked up by
         // the device's SMS application.
-        window.open('sms:13033' + uriSeparator + 'body=' +
-          encodeURIComponent(smsCode + ' ' + smsBodyContent));
+        window.open(smsUri + encodeURIComponent(' ' + smsBodyContent));
       }
     } else if (confirm(MESSAGE_DELETE_INFO)) {
       // Clear the local storage, if the clicked button contains no SMS code,
