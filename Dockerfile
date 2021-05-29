@@ -5,7 +5,10 @@ FROM node:alpine as builder
 WORKDIR /home/node
 
 # Copy project files into the root of the work directory.
-COPY . ./
+COPY --chown=node:node . ./
+
+# Switch to the 'node' user.
+USER node
 
 # Use 'npm' to download dependencies and build the application.
 RUN npm install
